@@ -1,0 +1,3 @@
+# Exclude these files from the git repo
+*/node_modules/*
+*/.ntvs_analysis.dat

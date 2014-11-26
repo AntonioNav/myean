@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="appPhoneLogger">
+
+<head ng-controller="homeCtrl as vm">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simple web to show phone calls logs">
+    <meta name="author" content="Antonio Navarro">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <title>{{ vm.title }}</title>
+    <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lib/ngtable/0.3.2/ng-table.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default" role="navigation" ng-controller="MenuCtrl as vm">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="o in opcionesMenu" ng-class="{ active: vm.isActive(o.path) }">
+                        <a href="{{o.path}}">{{o.text}}</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">{{name}}</a>
+                    </li>
+                    <li><a href="#">{{message}}</a>
+                    </li </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <div ng-view></div>
+    </div>
+
+    <pie></pie>
+    <!-- JavaScript References -->
+    <!-- Angular desde CDN -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-cookies.min.js"></script>
+    <script src="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.js"></script>
+    <script src="http://bazalt-cms.com/assets/ng-table-export/0.1.0/ng-table-export.js"></script>
+-->
+    <!-- Nuestras propias referencias -->
+    <script src="js/lib/angular/1.2.25/angular.min.js"></script>
+    <script src="js/lib/angular/1.2.25/angular-resource.min.js"></script>
+    <script src="js/lib/angular/1.2.25/angular-route.min.js"></script>
+    <script src="js/lib/angular/1.2.25/angular-cookies.min.js"></script>
+    <script src="js/lib/ngtable/0.3.2/ng-table.min.js"></script>
+
+    <!-- build:js js/total.min.js -->
+    <script src="app.js"></script>
+    <script src="_shared/routes.js"></script>
+    <script src="_shared/menuFactory.js"></script>
+    <script src="_shared/MenuCtrl.js"></script>
+    <script src="_shared/filters.js"></script>
+    <script src="_shared/directives.js"></script>
+    <script src="home/loginFactory.js"></script>
+    <script src="home/homeCtrl.js"></script>
+    <script src="home/logoutFactory.js"></script>
+    <script src="home/logoutCtrl.js"></script>
+    <script src="users/usersFactory.js"></script>
+    <script src="users/usersCtrl.js"></script>
+    <!-- endbuild -->
+
+
+</body>
