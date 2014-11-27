@@ -15,7 +15,7 @@
         .filter('transBool', function () {
             return function (input) {
                 if (input == 1) {
-                    return 'Si';
+                    return 'Yes';
                 } else {
                     return 'No';
                 };
