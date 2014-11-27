@@ -3,15 +3,13 @@
         <form name="frmLogin" class="form-horizontal"  novalidate>
             <fieldset>
                 <div id="legend">
-                    <legend class="">Entrada de usuarios actuales</legend>
+                    <legend class="">Login</legend>
                 </div>
                 <div class="control-group">
                     <!-- email -->
                     <label class="control-label" for="email">Email</label>
                     <div class="controls">
-                        <input 
-type="email" ng-model="vm.user.email" name="email" class="input-xlarge" required>
-    <p ng-show="vm.emailInvalid" >No vale gmail</p>
+                        <input type="email" ng-model="vm.user.email" name="email" class="input-xlarge" required>
                     </div>
                 </div>
                 <div class="control-group">
@@ -23,18 +21,18 @@ type="email" ng-model="vm.user.email" name="email" class="input-xlarge" required
                                ng-minlength="4" ng-maxlength="26"
                                ng-model="vm.user.password" name="password" class="input-xlarge">
                         
-    <p ng-show="frmLogin.password.$error.minlength" >Muy corta</p>
-    <p ng-show="frmLogin.password.$error.maxlength" >Muy larga</p>
+                        <p ng-show="frmLogin.password.$error.minlength" >Too short!</p>
+                        <p ng-show="frmLogin.password.$error.maxlength" >Too long!</p>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <button class="btn btn-danger"
-        ng-disabled="frmLogin.$invalid"
-        ng-click="vm.login()">Entrar</button>
+                            ng-disabled="frmLogin.$invalid"
+                            ng-click="vm.login()">Submit</button>
                     </div>
                 </div>
-                <a href="/#/register">Crear cuenta</a>
+<!--                <a href="/#/register">Register</a>-->
             </fieldset>
         </form>
     </div>

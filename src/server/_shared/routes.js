@@ -74,7 +74,7 @@ module.exports = function routes(express, passport, util, users) {
         
             //Menus iniciales comunes
             options.push({
-                    text: 'Inicio',
+                    text: 'Home',
                     path: '/#/',
                 });
         
@@ -90,7 +90,7 @@ module.exports = function routes(express, passport, util, users) {
                 //Admin
                 case 1:
                     options.push({
-                            text: 'Lista de usuarios',
+                            text: 'List Users',
                             path: '/#/users/list'
                     });
                     break;
@@ -115,7 +115,7 @@ module.exports = function routes(express, passport, util, users) {
             //Menus finales comunes
             if (loged) {
                 options.push({
-                        text: 'Salir',
+                        text: 'logout',
                         path: '/#/logout'
                     });
             };

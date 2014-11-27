@@ -5,12 +5,12 @@
             .success(function (res) {
                 $cookieStore.remove('userData');
                 $rootScope.name = '';
-                $rootScope.message = 'Ha salido';
+                $rootScope.message = 'Is gone!';
                 $location.path('/');
                 $rootScope.opcionesMenu = menuFactory.query();
             })
             .error(function (err) {
-                console.log('error en logout: ' + err);
+                console.log('logoutCtrl - err: ' + err);
                 $rootScope.message('error: ' + err);
             });
     }

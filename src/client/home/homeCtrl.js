@@ -1,8 +1,8 @@
 (function () {
     var homeCtrl = function ($rootScope, $location, $cookieStore, loginFactory, menuFactory) {
         var vm = this;
-        vm.title = 'Control de llamadas';
-        vm.welcome = 'Bienvenido';
+        vm.title = 'Boilerplate MyEAN';
+        vm.welcome = 'Welcome!';
         
         vm.login = function () {
             loginFactory.postUser(vm.user.email, vm.user.password)
@@ -10,16 +10,16 @@
                         var user = res;
                         if (user) {
                             $rootScope.name = user.email;
-                            $rootScope.message = 'ha vuelto';
+                            $rootScope.message = 'User is back';
                             $cookieStore.put('userData', user);
                             $location.path('/');
                             $rootScope.opcionesMenu = menuFactory.query();
                         } else {
-                            $rootScope.message = 'Algo ha salido mal';
+                            $rootScope.message = 'Something is wrong';
                         }
                     })
                     .error(function (err) {
-                        console.log('error al recibir sessionId: ' + err);
+                        console.log('SessionId error: ' + err);
                     });
         };
     }

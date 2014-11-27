@@ -30,5 +30,6 @@ There is many to do right now :-D
 - Add centraliced error management in server.
 - Add error control in client.
 - Verify roles in server for add, update or delete...
+- Add i18n translations (review angular-translate).
 
     

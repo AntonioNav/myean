@@ -94,7 +94,7 @@
                 .success(function(res) {
                     console.log('usersCtrl - newUser: ' + res);
                     $scope.cancelInsertForm();
-                    $rootScope.message = 'Usuario Creado con ID: ' + res;
+                    $rootScope.message = 'Create user with ID: ' + res;
                     $scope.tableParams.reload();
                 })
                 .error(function(err){
@@ -105,13 +105,13 @@
         
         $scope.delUser = function(p) {
             console.log('usersCtrl - delUser');        
-            if (confirm('¿Seguro que quiere borrar el usuario ' + p.Id + '?')) {
+            if (confirm('Are you sure you want to delete the user ' + p.Email + '?')) {
                 console.log('usersCtrl - delUser - confirm - ok');
                 usersFactory.deleteUser(p.Id)
                     .success(function(res) {
                         console.log('usersCtrl - delUser: ' + res);
                         $scope.tableParams.reload();
-                        $rootScope.message = res + ' usuario eliminado con Id: ' + p.Id;
+                        $rootScope.message = 'User delete with Id: ' + p.Id;
                     });
             } else {
                 console.log('usersCtrl - delUser - confirm - no');
