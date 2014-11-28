@@ -9,7 +9,7 @@
         $rootScope.opcionesMenu = menuFactory.query();
     }
     angular
-        .module('appPhoneLogger')
+        .module('appMyEAN')
         .controller('MenuCtrl', MenuCtrl);
 }());
 

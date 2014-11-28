@@ -8,5 +8,5 @@
         return factory;
     };
 
- angular.module("appPhoneLogger").factory('loginFactory',loginFactory);
+ angular.module("appMyEAN").factory('loginFactory',loginFactory);
 }());

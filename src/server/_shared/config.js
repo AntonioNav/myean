@@ -5,7 +5,7 @@ module.exports = {
         port : "3306",
         user : "root",
         password : "",
-        dbname : "phonelogger",
+        dbname : "myean",
         prefix : ""
     },
 };

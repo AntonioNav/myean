@@ -1,3 +1,3 @@
-angular.module("appPhoneLogger", 
-               ['ngResource', 'ngRoute', 'ngCookies', 'ngTable', 'commonFilters','commonDirectives']);
+angular.module("appMyEAN", 
+               ['ngResource', 'ngRoute', 'ngCookies', 'ngTable', 'commonFilters','commonDirectives','pascalprecht.translate','myTranslateSrv']);
 

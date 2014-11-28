@@ -25,37 +25,24 @@ users.listUsers(function (err, rows) {
         util.log("Error");
         util.log(err);
     } else {
-        util.log("Lista de Usuarios");
+        util.log("User List: ");
         util.log(rows);
     };
 });
 
-users.getUser(null, 'admin@admin.admin', function (err, rows) {
+users.getUser(null, 'admin@admin.new', function (err, rows) {
     if (err) {
         util.log("Error");
         util.log(err);
     } else {
         if (rows) {
-            util.log("Datos administrador: ");
+            util.log("Default admin data: ");
             util.log(rows);
         } else {
-            util.log("No hay datos de este usuario");
+            util.log("No data for default admin");
         }
     };
 });
-
-/*
-users.checkPass ('admin@admin.new', 'admin', function (err, rows) {
-    if (err) {
-        util.log("Error");
-        util.log(err);
-    } else {
-        util.log("Clave: ");
-        util.log(rows);
-    }    ;
-});
-*/
-
 
 var app = express();
 var server = require("http").Server(app);

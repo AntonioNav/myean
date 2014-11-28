@@ -38,12 +38,10 @@ module.exports = function routes(express, passport, util, users) {
     router.route('/api/login')
         .post(function (req, res, next) {
             passport.authenticate('local', function(err, user, info) {
-                console.log('routes - login: user:' + JSON.stringify(user));
                 if (err) { return next(err); }
                 if (!user) { return res.redirect('/#/login'); }
                 req.logIn(user, function(err) {
                     if (err) { return next(err); }
-                    console.log('routes - login: user:' + JSON.stringify(user));
                     res.set('user', user);
                     return res.send(user);
                 });
@@ -66,13 +64,11 @@ module.exports = function routes(express, passport, util, users) {
             var loged = false;
         
             if (req.user) {
-                console.log('routes - menu: req.user: ' + JSON.stringify(req.user));
-                console.log('routes - menu: req.user.roles: ' + req.user.roles);
                 roles = req.user.roles;
                 loged = true;
             };
         
-            //Menus iniciales comunes
+            //Initial, shared options menu
             options.push({
                     text: 'Home',
                     path: '/#/',
@@ -85,6 +81,7 @@ module.exports = function routes(express, passport, util, users) {
                     });                
             };
 
+            //Middle, role options menu
             roles.forEach(function (rol, index) {
                 switch (rol.Id) {
                 //Admin
@@ -97,7 +94,7 @@ module.exports = function routes(express, passport, util, users) {
                 //User
                 case 2:
                     options.push({
-                            text: 'User Options',
+                            text: 'Profile',
                             path: '/#/'
                     });
                     break;
@@ -112,7 +109,7 @@ module.exports = function routes(express, passport, util, users) {
 
             });
         
-            //Menus finales comunes
+            //End, another shared options menu
             if (loged) {
                 options.push({
                         text: 'logout',

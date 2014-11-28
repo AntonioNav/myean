@@ -16,6 +16,6 @@
     }
 
     angular
-        .module("appPhoneLogger")
+        .module("appMyEAN")
         .controller('logoutCtrl', logoutCtrl);
 }());

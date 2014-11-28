@@ -22,8 +22,6 @@ module.exports = function mypass(users) {
         process.nextTick(function () {
             users.getUser(null, username, function(err, user) {
                 
-                console.log('mypass - use: user: ' + JSON.stringify(user));
-                
                 if (err) { return done(err); }
 
                 if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }

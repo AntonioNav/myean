@@ -53,8 +53,8 @@
     <tbody ng-repeat="p in $data">
         <form name="updateForm">
             <tr id="tr{{p.Id}}" ng-class-odd="'odd'" ng-class-even="'even'">
-                <td class="rowTd col-xs-1" data-title="'#'" sortable="'Id'" filter="{ 'Id': 'text' }">{{p.Id}}</td>
-                <td class="rowTd col-xs-4" data-title="'Name'" sortable="'Name'" filter="{ 'Name': 'text' }">
+                <td class="rowTd col-xs-1" data-title="title.col1" sortable="'Id'" filter="{ 'Id': 'text' }">{{p.Id}}</td>
+                <td class="rowTd col-xs-4" data-title="title.col2" sortable="'Name'" filter="{ 'Name': 'text' }">
                     <span ng-if='!(editId===p.Id)'>{{p.Name}}</span>
                     <div ng-if='editId===p.Id'>
                         <input type="text" name="Name" ng-model="p.Name" value="{{p.Name}}">
@@ -66,7 +66,7 @@
                         <span ng-show='p.PassErr' class="text-danger">Passwords not match!</span>
                     </div>
                 </td>
-                <td class="rowTd col-xs-4" data-title="'Email'" sortable="'Email'" filter="{ 'Email': 'text' }">
+                <td class="rowTd col-xs-4" data-title="title.col3" sortable="'Email'" filter="{ 'Email': 'text' }">
                     <span ng-if='!(editId===p.Id)'>{{p.Email}}</span>
                     <div ng-if='editId===p.Id'>
                         <input type="text" name="Email" ng-model="p.Email" value="{{p.Email}}">
@@ -77,7 +77,7 @@
                         <input type="password" name="Pass2" ng-model="p.Pass2" value="{{p.Pass2}}" class="form-control">
                     </div>
                 </td>
-                <td class="rowTd col-xs-1" data-title="'SendMail'">
+                <td class="rowTd col-xs-1" data-title="title.col4">
                     <span ng-if='!(editId===p.Id)'>{{p.SendMail | transBool}}</span>
                     <div ng-if='editId===p.Id' style="width:25%;margin:0 auto;text-align:left;">
                         <div class="radio">

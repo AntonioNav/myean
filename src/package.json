@@ -1,7 +1,7 @@
 {
-  "name": "SPA112Logger",
+  "name": "MyEAN",
   "version": "0.0.1",
-  "description": "Simple web app to show your phone logs",
+  "description": "MySQL, Expressjs, Angularjs, Nodejs Boilerplate",
   "main": "index.js",
   "scripts": {
     "test": "karma start"

@@ -3,5 +3,5 @@
         return $resource("/api/menu/", {});
     };
 
-    angular.module("appPhoneLogger").factory('menuFactory',menuFactory);
+    angular.module("appMyEAN").factory('menuFactory',menuFactory);
 }());

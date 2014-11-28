@@ -30,5 +30,5 @@
             });
     };
 
-    angular.module('appPhoneLogger').config(routes);
+    angular.module('appMyEAN').config(routes);
 }());

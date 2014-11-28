@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="appPhoneLogger">
+<html lang="es" ng-app="appMyEAN">
 
 <head ng-controller="homeCtrl as vm">
     <meta charset="utf-8">
@@ -53,6 +53,8 @@
     <script src="js/lib/angular/1.2.25/angular-route.min.js"></script>
     <script src="js/lib/angular/1.2.25/angular-cookies.min.js"></script>
     <script src="js/lib/ngtable/0.3.2/ng-table.min.js"></script>
+    <script src="js/lib/angular-translate/angular-translate.min.js"></script>
+    <script src="js/lib/angular-translate/angular-translate-loader-partial.min.js"></script>
 
     <!-- build:js js/total.min.js -->
     <script src="app.js"></script>
@@ -61,6 +63,7 @@
     <script src="_shared/MenuCtrl.js"></script>
     <script src="_shared/filters.js"></script>
     <script src="_shared/directives.js"></script>
+    <script src="_shared/translate/translateSrv.js"></script>
     <script src="home/loginFactory.js"></script>
     <script src="home/homeCtrl.js"></script>
     <script src="home/logoutFactory.js"></script>

@@ -1,8 +1,16 @@
 (function () {
-    var homeCtrl = function ($rootScope, $location, $cookieStore, loginFactory, menuFactory) {
+    var homeCtrl = function ($rootScope, $location, $cookieStore, $filter, $translate, $translatePartialLoader, loginFactory, menuFactory) {
         var vm = this;
-        vm.title = 'Boilerplate MyEAN';
-        vm.welcome = 'Welcome!';
+        
+//        $translatePartialLoader.addPart('home');
+//        $translate.refresh()
+
+        vm.title = $translate.instant('App_Title');
+        
+//        var transfilter = $filter('translate');
+        
+        
+        //vm.welcome = 'Welcome!';
         
         vm.login = function () {
             loginFactory.postUser(vm.user.email, vm.user.password)
@@ -23,5 +31,5 @@
                     });
         };
     }
-    angular.module('appPhoneLogger').controller('homeCtrl', homeCtrl);
+    angular.module('appMyEAN').controller('homeCtrl', homeCtrl);
 }());

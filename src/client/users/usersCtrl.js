@@ -5,6 +5,13 @@
         var backupName,
             backupEmail,
             backupSendMail;
+        
+        $scope.title = {
+                    col1: '#',
+                    col2: 'Name',
+                    col3: 'Email',
+                    col4: 'Sendmail'
+                };
 
         $scope.nu = {SendMail: 1};
 
@@ -93,7 +100,7 @@
             usersFactory.newUser(nu.Name, nu.Email, nu.SendMail, nu.Pass1)
                 .success(function(res) {
                     console.log('usersCtrl - newUser: ' + res);
-                    $scope.cancelInsertForm();
+                    $scope.cancelInsertForm(nu);
                     $rootScope.message = 'Create user with ID: ' + res;
                     $scope.tableParams.reload();
                 })
@@ -120,6 +127,6 @@
 
     }
     angular
-        .module("appPhoneLogger")
+        .module("appMyEAN")
         .controller("usersCtrl", usersCtrl);
 }());

@@ -23,5 +23,5 @@
 
         return factoria;
     };
-    angular.module("appPhoneLogger").factory('usersFactory', usersFactory);
+    angular.module("appMyEAN").factory('usersFactory', usersFactory);
 }());
