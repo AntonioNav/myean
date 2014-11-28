@@ -3,7 +3,6 @@
 //
 angular.module('myTranslateSrv', ['pascalprecht.translate'])
   .config(function($translateProvider, $translatePartialLoaderProvider ) {
-    $translatePartialLoaderProvider.addPart('home');
     $translateProvider.useLoader('$translatePartialLoader', {
       urlTemplate: '_shared/translate/assets/{lang}/{part}.json'
     });

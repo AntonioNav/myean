@@ -8,10 +8,11 @@
     <meta name="description" content="Simple web to show phone calls logs">
     <meta name="author" content="Antonio Navarro">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-    <title>{{ vm.title }}</title>
+    <title>{{ "App_Title" | translate }}</title>
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="css/lib/ngtable/0.3.2/ng-table.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/lib/ngtable/0.3.2/ng-table.min.css" rel="stylesheet">
+    <link href="css/lib/flag-icons/css/flag-icon.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,6 +25,8 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <button type="button" class="btn btn-default flag-icon flag-icon-es" ng-click="vm.changeLang('es-ES')"></span>
+                    <button type="button" class="btn btn-default flag-icon flag-icon-gb" ng-click="vm.changeLang('en-EN')"></span>
                     <li><a href="#">{{name}}</a>
                     </li>
                     <li><a href="#">{{message}}</a>

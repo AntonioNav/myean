@@ -13,6 +13,8 @@
                     col4: 'Sendmail'
                 };
 
+        $scope.prueba = 'prueba';
+        
         $scope.nu = {SendMail: 1};
 
         $scope.tableParams = new ngTableParams({

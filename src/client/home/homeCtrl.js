@@ -2,16 +2,9 @@
     var homeCtrl = function ($rootScope, $location, $cookieStore, $filter, $translate, $translatePartialLoader, loginFactory, menuFactory) {
         var vm = this;
         
-//        $translatePartialLoader.addPart('home');
-//        $translate.refresh()
-
-        vm.title = $translate.instant('App_Title');
-        
-//        var transfilter = $filter('translate');
-        
-        
-        //vm.welcome = 'Welcome!';
-        
+        $translatePartialLoader.addPart('home');
+        $translate.refresh()
+            
         vm.login = function () {
             loginFactory.postUser(vm.user.email, vm.user.password)
                     .success(function (res) {
