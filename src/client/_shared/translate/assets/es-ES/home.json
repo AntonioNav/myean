@@ -1,4 +1,10 @@
 {
-  "App_Title": "MyEAN Boilerplate",
-  "App_welcome": "¡Bienvenido!"
+    "App_Title": "MyEAN Boilerplate",
+    "App_welcome": "¡Bienvenido!",
+    "Home_Login": "Entrar",
+    "Home_Email": "Correo",
+    "Home_Password": "Contraseña",
+    "Home_Short": "¡Contraseña muy corta!",
+    "Home_Long": "¡Contraseña muy larga!",
+    "Home_Submit": "Enviar"
 }

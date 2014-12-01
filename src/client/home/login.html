@@ -3,33 +3,33 @@
         <form name="frmLogin" class="form-horizontal"  novalidate>
             <fieldset>
                 <div id="legend">
-                    <legend class="">Login</legend>
+                    <legend class="">{{"Home_Login" | translate}}</legend>
                 </div>
                 <div class="control-group">
                     <!-- email -->
-                    <label class="control-label" for="email">Email</label>
+                    <label class="control-label" for="email">{{"Home_Email" | translate}}</label>
                     <div class="controls">
                         <input type="email" ng-model="vm.user.email" name="email" class="input-xlarge" required>
                     </div>
                 </div>
                 <div class="control-group">
                     <!-- Password-->
-                    <label class="control-label" for="password">Password</label>
+                    <label class="control-label" for="password">{{"Home_Password" | translate}}</label>
                     <div class="controls">
                         <input type="password"
                                required 
                                ng-minlength="4" ng-maxlength="26"
                                ng-model="vm.user.password" name="password" class="input-xlarge">
                         
-                        <p ng-show="frmLogin.password.$error.minlength" >Too short!</p>
-                        <p ng-show="frmLogin.password.$error.maxlength" >Too long!</p>
+                        <p ng-show="frmLogin.password.$error.minlength" >{{"Home_Short" | translate}}</p>
+                        <p ng-show="frmLogin.password.$error.maxlength" >{{"Home_Long" | translate}}</p>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <button class="btn btn-danger"
                             ng-disabled="frmLogin.$invalid"
-                            ng-click="vm.login()">Submit</button>
+                            ng-click="vm.login()">{{"Home_Submit" | translate}}</button>
                     </div>
                 </div>
 <!--                <a href="/#/register">Register</a>-->

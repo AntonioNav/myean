@@ -1,0 +1,22 @@
+{
+    "Users_Manage": "Gestión de Usuarios",
+    "Users_New": "Nuevo Usuario",
+    "Users_Name": "Nombre",
+    "Users_Required": "* Campo obligatorio!",
+    "Users_Name_Short": "* Nombre muy corto!",
+    "Users_Email": "Correo",
+    "Users_Password": "Contraseña",
+    "Users_New_Password": "Nueva Contraseña: ",
+    "Users_Pass_Not_Match": "* Contraseñas no coinciden!",
+    "Users_SendMail": "Enviar Correo",
+    "Bool_Yes": "Sí",
+    "Bool_No": "No",
+    "Users_Create": "Crear",
+    "Users_Cancel": "Cancelar",
+    "Users_List": "Lista de Usuarios",
+    "Users_Again": "Repetir: ",
+    "Users_Edit": "Editar",
+    "Users_Save": "Guardar",
+    "Users_Delete": "Eliminar"
+    
+}

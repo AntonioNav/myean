@@ -15,9 +15,9 @@
         .filter('transBool', function () {
             return function (input) {
                 if (input == 1) {
-                    return 'Yes';
+                    return 'Bool_Yes';
                 } else {
-                    return 'No';
+                    return 'Bool_No';
                 };
             }
         })

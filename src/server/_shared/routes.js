@@ -70,13 +70,13 @@ module.exports = function routes(express, passport, util, users) {
         
             //Initial, shared options menu
             options.push({
-                    text: 'Home',
+                    text: 'Menu_Home',
                     path: '/#/',
                 });
         
             if (!loged) {
                 options.push({
-                        text: 'Login',
+                        text: 'Menu_Login',
                         path: '/#/login',
                     });                
             };
@@ -87,21 +87,21 @@ module.exports = function routes(express, passport, util, users) {
                 //Admin
                 case 1:
                     options.push({
-                            text: 'List Users',
+                            text: 'Menu_List_Users',
                             path: '/#/users/list'
                     });
                     break;
                 //User
                 case 2:
                     options.push({
-                            text: 'Profile',
+                            text: 'Menu_Profile',
                             path: '/#/'
                     });
                     break;
                 //Other
                 case 3:
                     options.push({
-                            text: 'Other Options',
+                            text: 'Menu_Other',
                             path: '/#/'
                     });
                     break;
@@ -112,7 +112,7 @@ module.exports = function routes(express, passport, util, users) {
             //End, another shared options menu
             if (loged) {
                 options.push({
-                        text: 'logout',
+                        text: 'Menu_Logout',
                         path: '/#/logout'
                     });
             };

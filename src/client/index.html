@@ -21,12 +21,16 @@
             <div class="container">
                 <ul class="nav navbar-nav">
                     <li ng-repeat="o in opcionesMenu" ng-class="{ active: vm.isActive(o.path) }">
-                        <a href="{{o.path}}">{{o.text}}</a>
+                        <a href="{{o.path}}">{{o.text | translate}}</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <button type="button" class="btn btn-default flag-icon flag-icon-es" ng-click="vm.changeLang('es-ES')"></span>
-                    <button type="button" class="btn btn-default flag-icon flag-icon-gb" ng-click="vm.changeLang('en-EN')"></span>
+                    <li>
+                        <button type="button" class="btn btn-link flag-icon flag-icon-es" ng-click="vm.changeLang('es-ES')"></span>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-link flag-icon flag-icon-gb" ng-click="vm.changeLang('en-EN')"></span>
+                    </li>
                     <li><a href="#">{{name}}</a>
                     </li>
                     <li><a href="#">{{message}}</a>

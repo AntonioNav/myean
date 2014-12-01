@@ -1,54 +1,54 @@
   
 <!--Example from http://www.netzdenker.de/musterseiten/ngTable/ y http://bazalt-cms.com/ng-table/example/22">example-->
 
-<h1>Manage Users</h1>
+<h1>{{"Users_Manage" | translate}}</h1>
 
 <form name="insertForm" class="form-horizontal text-left" ng-submit="insertUser(nu)" novalidate>
-    <button type="button" class="btn btn-default" ng-click="nu.showInsertForm=!nu.showInsertForm">New User</button>
+    <button type="button" class="btn btn-default" ng-click="nu.showInsertForm=!nu.showInsertForm">{{"Users_New" | translate}}</button>
     <hr>
     <div class="form-group form-group-sm" ng-show="nu.showInsertForm">
         <div class="form-group">
-            <label class="control-label col-xs-3">Name</label>
+            <label class="control-label col-xs-3">{{"Users_Name" | translate}}</label>
             <div class="col-xs-9" ng-class="(insertForm.newName.$invalid && !insertForm.$pristine) ? 'has-error' : ''">
-                <input class="form-control col-xs-9" type="text" placeholder="Name" name="newName" ng-model="nu.Name" ng-minlength="3" required>
-                <span ng-show='insertForm.newName.$invalid && !insertForm.$pristine' class="text-danger">* Required field!</span>
-                <span ng-show='insertForm.newName.$error.minlength' class="text-danger">* Name too short!</span>
+                <input class="form-control col-xs-9" type="text" placeholder="{{'Users_Name' | translate}}" name="newName" ng-model="nu.Name" ng-minlength="3" required>
+                <span ng-show='insertForm.newName.$invalid && !insertForm.$pristine' class="text-danger">{{"Users_Required" | translate}}</span>
+                <span ng-show='insertForm.newName.$error.minlength' class="text-danger">{{"Users_Name_Short" | translate}}</span>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-3">Email</label>
+            <label class="control-label col-xs-3">{{"Users_Email" | translate}}</label>
             <div class="col-xs-9" ng-class="(insertForm.newEmail.$invalid && !insertForm.$pristine) ? 'has-error' : ''">
-                <input class="form-control col-xs-9" type="email" placeholder="Email" name="newEmail" ng-model="nu.Email" required>
-                <span ng-show='insertForm.newEmail.$invalid && !insertForm.$pristine' class="text-danger">* Required field!</span>
+                <input class="form-control col-xs-9" type="email" placeholder="{{'Users_Email' | translate}}" name="newEmail" ng-model="nu.Email" required>
+                <span ng-show='insertForm.newEmail.$invalid && !insertForm.$pristine' class="text-danger">{{"Users_Required" | translate}}</span>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-3">Password</label>
+            <label class="control-label col-xs-3">{{"Users_Password" | translate}}</label>
             <div class="col-xs-9" ng-class="insertForm.newPass2.$error.match ? 'has-error' : ''">
-                <input class="form-control" type="password" placeholder="Password" name="newPass1" ng-model="nu.Pass1" required>
-                <input class="form-control" type="password" placeholder="Again" name="newPass2" ng-model="nu.Pass2" match="nu.Pass1" required>
-                <span ng-show='insertForm.newPass2.$error.match' class="text-danger">Passwords not match!</span>
-                <span ng-show='insertForm.newPass1.$invalid && !insertForm.$pristine' class="text-danger">* Required field!</span>
+                <input class="form-control" type="password" placeholder="{{'Users_Password' | translate}}" name="newPass1" ng-model="nu.Pass1" required>
+                <input class="form-control" type="password" placeholder="{{'Users_Again' | translate}}" name="newPass2" ng-model="nu.Pass2" match="nu.Pass1" required>
+                <span ng-show='insertForm.newPass2.$error.match' class="text-danger">{{"Users_Pass_Not_Match" | translate}}</span>
+                <span ng-show='insertForm.newPass1.$invalid && !insertForm.$pristine' class="text-danger">{{"Users_Required" | translate}}</span>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-3">Send Mail</label>
+            <label class="control-label col-xs-3">{{"Users_SendMail" | translate}}</label>
             <div class="col-xs-9">
-                <input type="radio" name="newSendMail" ng-model="nu.SendMail" value="1">{{1 | transBool }}
+                <input type="radio" name="newSendMail" ng-model="nu.SendMail" value="1">{{1 | transBool | translate }}
                 <br>
-                <input type="radio" name="newSendMail" ng-model="nu.SendMail" value="0">{{0 | transBool }}
+                <input type="radio" name="newSendMail" ng-model="nu.SendMail" value="0">{{0 | transBool | translate }}
             </div>
         </div>
         <div class="btn-group pull-right">
-            <button type="submit" class="btn btn-success" ng-disabled="insertForm.$invalid">Create</button>
-            <button type="button" class="btn btn-info" ng-click="cancelInsertForm(nu)">Cancel</button>
+            <button type="submit" class="btn btn-success" ng-disabled="insertForm.$invalid">{{"Users_Create" | translate}}</button>
+            <button type="button" class="btn btn-info" ng-click="cancelInsertForm(nu)">{{"Users_Cancel" | translate}}</button>
         </div>
 
     </div>
 </form>
 
 <hr>
-<h2>User List</h2>
+<h2>{{"Users_List" | translate}}</h2>
 <table ng-table="tableParams" show-filter="true" class="table table-hover">
     <tbody ng-repeat="p in $data">
         <form name="updateForm">
@@ -60,10 +60,10 @@
                         <input type="text" name="Name" ng-model="p.Name" value="{{p.Name}}">
                     </div>
                     <br>
-                    <label ng-if='editId===p.Id' class="col-xs-6">New Password: </label>
+                    <label ng-if='editId===p.Id' class="col-xs-6">{{"Users_New_Password" | translate}}</label>
                     <div ng-if='editId===p.Id' class="col-xs-6 form-group form-group-sm" ng-class=" p.PassErr ? 'has-error' : ''">
-                        <input type="password" name="Pass1" ng-model="p.Pass1" value="{{p.Pass1}}" class="form-control"><br>
-                        <span ng-show='p.PassErr' class="text-danger">Passwords not match!</span>
+                        <input type="password" name="Pass1" placeholder="{{'Users_Password' | translate}}" ng-model="p.Pass1" value="{{p.Pass1}}" class="form-control"><br>
+                        <span ng-show='p.PassErr' class="text-danger">{{"Users_Pass_Not_Match" | translate}}</span>
                     </div>
                 </td>
                 <td class="rowTd col-xs-4" data-title="title.col3" sortable="'Email'" filter="{ 'Email': 'text' }">
@@ -72,36 +72,36 @@
                         <input type="text" name="Email" ng-model="p.Email" value="{{p.Email}}">
                     </div>
                     <br>
-                    <label ng-if='editId===p.Id' class="col-xs-4 text-right">Again: </label>
+                    <label ng-if='editId===p.Id' class="col-xs-4 text-right">{{"Users_Again" | translate}}</label>
                     <div ng-if='editId===p.Id' class="col-xs-8 form-group form-group-sm" ng-class=" p.PassErr ? 'has-error' : ''">
-                        <input type="password" name="Pass2" ng-model="p.Pass2" value="{{p.Pass2}}" class="form-control">
+                        <input type="password" name="Pass2" placeholder="{{'Users_Again' | translate}}" ng-model="p.Pass2" value="{{p.Pass2}}" class="form-control">
                     </div>
                 </td>
                 <td class="rowTd col-xs-1" data-title="title.col4">
-                    <span ng-if='!(editId===p.Id)'>{{p.SendMail | transBool}}</span>
+                    <span ng-if='!(editId===p.Id)'>{{p.SendMail | transBool | translate}}</span>
                     <div ng-if='editId===p.Id' style="width:25%;margin:0 auto;text-align:left;">
                         <div class="radio">
                             <label>
-                               <input type="radio" name="SendMail" ng-model="p.SendMail" value="1">{{1 | transBool}}
+                               <input type="radio" name="SendMail" ng-model="p.SendMail" value="1">{{1 | transBool | translate}}
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                               <input type="radio" name="SendMail" ng-model="p.SendMail" value="0">{{0 | transBool}}                             
+                               <input type="radio" name="SendMail" ng-model="p.SendMail" value="0">{{0 | transBool | translate}}
                             </label>
                         </div>
                     </div>
                 </td>
                 <td class="rowTd col-xs-2">
                     <div ng-if='!(editId===p.Id)'>
-                        <button type="button" class="btn btn-default" id="editRowBtn{{p.Id}}" ng-click="setEditId(p.Id, p)">Edit</button>
+                        <button type="button" class="btn btn-default" id="editRowBtn{{p.Id}}" ng-click="setEditId(p.Id, p)">{{"Users_Edit" | translate}}</button>
                     </div>
                     <div ng-if='editId===p.Id' class="btn-group">
-                        <button type="button" class="btn btn-success" ng-click="putUser(p)">Save</button>
-                        <button type="button" class="btn btn-info" ng-click="setEditId(-1, p)">Cancel</button>
+                        <button type="button" class="btn btn-success" ng-click="putUser(p)">{{"Users_Save" | translate}}</button>
+                        <button type="button" class="btn btn-info" ng-click="setEditId(-1, p)">{{"Users_Cancel" | translate}}</button>
                     </div>
                     <div ng-if='editId===p.Id' class="btn-group">
-                        <button type="button" class="btn btn-danger" ng-click="delUser(p)">Delete</button>
+                        <button type="button" class="btn btn-danger" ng-click="delUser(p)">{{"Users_Delete" | translate}}</button>
                     </div>
 
                 </td>

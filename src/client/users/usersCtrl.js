@@ -1,6 +1,9 @@
 (function () {
-    var usersCtrl = function ($scope, $rootScope, $filter, ngTableParams, usersFactory) { 
+    var usersCtrl = function ($scope, $rootScope, $filter, $translate, $translatePartialLoader, ngTableParams, usersFactory) { 
 
+        $translatePartialLoader.addPart('users');
+        $translate.refresh()
+            
         var data = [];
         var backupName,
             backupEmail,

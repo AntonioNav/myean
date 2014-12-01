@@ -1,0 +1,22 @@
+{
+    "Users_Manage": "Manage Users",
+    "Users_New": "New User",
+    "Users_Name": "Name",
+    "Users_Required": "* Required field!",
+    "Users_Name_Short": "* Name too short!",
+    "Users_Email": "Email",
+    "Users_Password": "Password",
+    "Users_New_Password": "New Password: ",
+    "Users_Pass_Not_Match": "* Passwords not match!",
+    "Users_SendMail": "Send Mail",
+    "Bool_Yes": "Yes",
+    "Bool_No": "No",
+    "Users_Create": "Create",
+    "Users_Cancel": "Cancel",
+    "Users_List": "User List",
+    "Users_Again": "Again: ",
+    "Users_Edit": "Edit",
+    "Users_Save": "Save",
+    "Users_Delete": "Delete"
+    
+}
