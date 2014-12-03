@@ -31,10 +31,9 @@
                     <li>
                         <button type="button" class="btn btn-link flag-icon flag-icon-gb" ng-click="vm.changeLang('en-EN')"></span>
                     </li>
-                    <li><a href="#">{{name}}</a>
-                    </li>
-                    <li><a href="#">{{message}}</a>
-                    </li </ul>
+                    <li>{{name}}</li>
+                    <li>{{message}}</li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -62,6 +61,8 @@
     <script src="js/lib/ngtable/0.3.2/ng-table.min.js"></script>
     <script src="js/lib/angular-translate/angular-translate.min.js"></script>
     <script src="js/lib/angular-translate/angular-translate-loader-partial.min.js"></script>
+    <script src="js/lib/angular-translate/angular-translate-storage-cookie.min.js"></script>
+    <script src="js/lib/angular-translate/angular-translate-storage-local.min.js"></script>
 
     <!-- build:js js/total.min.js -->
     <script src="app.js"></script>

@@ -64,27 +64,22 @@
         $scope.putUser = function (p) {
 
             if (!(p.Pass1 === p.Pass2)) {
-                console.log('userCtrl - putUser: passwords not match!');
                 return p.PassErr = true;
             } else {
-                console.log('userCtrl - putUser: same passwords');                
                 p.PassErr = false;
             }
 
             if ((backupName === p.Name) && (backupEmail === p.Email) && (backupSendMail === p.SendMail) && (!p.Pass1)){
                 //No changes, no send to backend.
-                console.log('usersCtrl - updateUser: No changes');                
                 return $scope.editId = -1;
             } else {
                 usersFactory.putUser(p.Id, p.Name, p.Email, p.SendMail, p.Pass1)
                     .success(function(res) {
-                        console.log('usersCtrl - putUser: ' + res);
                         $scope.editId = -1;
                         $rootScope.message = 'Usuarios Actualizados: ' + res;
                         $scope.tableParams.reload();
                     })
                     .error(function(err){
-                        console.log('usersCtrl - updateUser: '+ err);
                         $rootScope.message = err;
                     });
             }
@@ -104,29 +99,22 @@
         $scope.insertUser = function (nu) {
             usersFactory.newUser(nu.Name, nu.Email, nu.SendMail, nu.Pass1)
                 .success(function(res) {
-                    console.log('usersCtrl - newUser: ' + res);
                     $scope.cancelInsertForm(nu);
                     $rootScope.message = 'Create user with ID: ' + res;
                     $scope.tableParams.reload();
                 })
                 .error(function(err){
-                    console.log('usersCtrl - newUser: '+ err);
                     $rootScope.message = err;
                 });
         };
         
         $scope.delUser = function(p) {
-            console.log('usersCtrl - delUser');        
             if (confirm('Are you sure you want to delete the user ' + p.Email + '?')) {
-                console.log('usersCtrl - delUser - confirm - ok');
                 usersFactory.deleteUser(p.Id)
                     .success(function(res) {
-                        console.log('usersCtrl - delUser: ' + res);
                         $scope.tableParams.reload();
                         $rootScope.message = 'User delete with Id: ' + p.Id;
                     });
-            } else {
-                console.log('usersCtrl - delUser - confirm - no');
             };
         };
 
