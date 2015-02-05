@@ -10,7 +10,15 @@ var flash = require('connect-flash');
 //Files required
 var config = require('./server/_shared/config');
 var util = require('./server/_shared/util');
-var database = require('./server/model/database')(config.database);
+
+var database = null;
+
+if (config.database.engine == "mysql") {
+    database = require('./server/model/mysql_database')(config.database.params.mysql);
+} else {
+    database = require('./server/model/sqlite_database')(config.database.params.sqlite);
+}
+ 
 var users = require('./server/model/users')(database);
 
 var mypass = require('./server/_shared/mypass')(users);
