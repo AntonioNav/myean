@@ -6,6 +6,10 @@ angular.module('myTranslateSrv', ['pascalprecht.translate'])
         $translateProvider.useLoader('$translatePartialLoader', {
             urlTemplate: '_shared/translate/assets/{lang}/{part}.json'
         });
-        $translateProvider.preferredLanguage('es-ES');
+        $translateProvider.registerAvailableLanguageKeys(['en-EN', 'es-ES'], {
+            'es_*': 'es-ES',
+            '*': 'en-EN',
+        });
+        $translateProvider.determinePreferredLanguage();
         $translateProvider.useLocalStorage();
     });

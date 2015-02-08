@@ -17,7 +17,6 @@ module.exports = function database (config) {
         });
     };
 
-
     function newUser(name, email, hash, cb) {
         var db = new sqlite.Database(config.path);
 

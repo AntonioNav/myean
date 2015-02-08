@@ -3,7 +3,7 @@
         var vm = this;
         
         $translatePartialLoader.addPart('home');
-        $translate.refresh()
+        $translate.refresh();
             
         vm.login = function () {
             loginFactory.postUser(vm.user.email, vm.user.password)
