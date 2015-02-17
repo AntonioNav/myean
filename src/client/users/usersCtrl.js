@@ -94,6 +94,7 @@
             nu.SendMail = 1;
             nu.showInsertForm = false;
             $rootScope.message = '';
+            $scope.insertForm.$setPristine();
         };
 
         $scope.insertUser = function (nu) {

@@ -1,11 +1,12 @@
-
-module.exports = function routes(express, passport, util, users) {
+module.exports = function routes(express, passport, users) {
 
     var router = express.Router();
     
     function ensureAuthenticated(req, res, next) {
     
-        if (req.isAuthenticated()) { return next(); }
+        if (req.isAuthenticated()) {
+            return next();
+        }
         res.redirect('/#/login');
     };
 
@@ -90,12 +91,16 @@ module.exports = function routes(express, passport, util, users) {
                             text: 'Menu_List_Users',
                             path: '/#/users/list'
                     });
+                    options.push({
+                            text: 'Menu_Profile',
+                            path: '/#/user'
+                    });
                     break;
                 //User
                 case 2:
                     options.push({
                             text: 'Menu_Profile',
-                            path: '/#/'
+                            path: '/#/user'
                     });
                     break;
                 //Other
@@ -123,15 +128,15 @@ module.exports = function routes(express, passport, util, users) {
     router.route('/api/priv/users')
         .get(function (req, res, next) {
             var roles = req.user.roles;
-            var authorized = false;
+            var isAdmin = false;
 
             roles.forEach(function (rol) {
                 if (rol.Id === 1){
-                    authorized = true;
+                    isAdmin = true;
                 };
             });
 
-            if (!authorized) {
+            if (!isAdmin) {
                 res.status(403).send('not authorized');
             } else {
                 users.listUsers( function (err, rows) { 
@@ -145,23 +150,25 @@ module.exports = function routes(express, passport, util, users) {
         });
     
     router.route('/api/priv/user')
-        .get(function (req, res, next) {
-            res.send('User ID is required!');
-        })
-        .put(function (req, res, next) {
-            var id = req.body.Id;
-            var name = req.body.Name;
-            var email = req.body.Email;
-            var sendmail = req.body.SendMail;
-            var password = req.body.Password;
-            users.updateUser(id, name, email, sendmail, password, function(err, result){
-                if (err) {
-                    res.status(500).send('Update error: ' + err);
-                } else {
-                    res.send('' + result);
-                };
+        //Only Admin is allowed to add new user
+        .all(function(req, res, next){
+            var isAdmin = false;
+        
+            req.user.roles.forEach(function (rol, index) {
+                if (rol.Id == 1) {
+                    isAdmin = true;
+                }
             });
+        
+            if (!isAdmin) {
+                res.status(401).send("You are not allowed to do this!");
+                return;
+            } else {
+                return next();
+            }
+    
         })
+        //New users
         .post(function (req, res, next) {
             var name = req.body.Name;
             var email = req.body.Email;
@@ -176,11 +183,57 @@ module.exports = function routes(express, passport, util, users) {
         });
 
     router.route('/api/priv/user/:id')
+        //Only Admin or each user is allowed to list/edit/delete
+        .all(function(req, res, next){
+            var id = req.params.id;
+            var isAdmin = false;
+        
+            req.user.roles.forEach(function (rol, index) {
+                if (rol.Id == 1) {
+                    isAdmin = true;
+                }
+            });
+        
+            if ((id != req.user.Id) && (!isAdmin)) {
+                res.status(401).send("You are not allowed to do this!");
+                return;
+            } else {
+                return next();
+            }
+    
+        })
         .get(function (req, res, next) {
             var id = req.params.id;
+        
             users.getUser(id, null, function (err, result) {
                 if (err) {
                     res.status(500).send('User get error: ' + err);
+                } else {
+                    res.send('' + JSON.stringify(result));
+                };
+            });
+        })
+        .put(function (req, res, next) {
+    
+            var id = req.params.id;
+            var name = req.body.Name;
+            var email = req.body.Email;
+            var sendmail = req.body.SendMail;
+            var password = req.body.Password;
+            var oldpass = req.body.OldPass;
+
+            var isAdmin = false;
+        
+            req.user.roles.forEach(function (rol, index) {
+                if (rol.Id == 1) {
+                    isAdmin = true;
+                }
+            });
+        
+            users.updateUser(id, name, email, sendmail, password, oldpass, isAdmin, function(err, result){
+                if (err) {
+                    console.log('error: ' + err);
+                    res.send('Update error: ' + err);
                 } else {
                     res.send('' + result);
                 };
@@ -192,7 +245,7 @@ module.exports = function routes(express, passport, util, users) {
                 if (err) {
                     res.status(500).send('Delete error: ' + err);
                 } else {
-                    res.send('' + result);
+                    res.send('' + JSON.stringify(result));
                 };
             });
         });

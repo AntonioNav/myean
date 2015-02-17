@@ -6,10 +6,11 @@ var cookieParser = require('cookie-parser');
 var expSession = require('express-session');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
+var util = require('util');
 
 //Files required
 var config = require('./server/_shared/config');
-var util = require('./server/_shared/util');
+var tools = require('./server/_shared/tools');
 
 var database = null;
 
@@ -22,32 +23,32 @@ if (config.database.engine == "mysql") {
 var users = require('./server/model/users')(database);
 
 var mypass = require('./server/_shared/mypass')(users);
-var routes = require('./server/_shared/routes')(express, mypass, util, users);
+var routes = require('./server/_shared/routes')(express, mypass, users);
 
-util.log('ready');
-util.log(JSON.stringify(config));
+tools.log('ready');
+tools.log(JSON.stringify(config));
 
 
 users.listUsers(function (err, rows) {
     if (err) {
-        util.log("Error");
-        util.log(err);
+        tools.log("Error");
+        tools.log(err);
     } else {
-        util.log("User List: ");
-        util.log(rows);
+        tools.log("User List: ");
+        tools.log(rows);
     };
 });
 
 users.getUser(null, 'admin@admin.new', function (err, rows) {
     if (err) {
-        util.log("Error");
-        util.log(err);
+        tools.log("Error");
+        tools.log(err);
     } else {
         if (rows) {
-            util.log("Default admin data: ");
-            util.log(rows);
+            tools.log("Default admin data: ");
+            tools.log(rows);
         } else {
-            util.log("No data for default admin");
+            tools.log("No data for default admin");
         }
     };
 });
@@ -73,7 +74,7 @@ app.use(mypass.initialize());
 app.use(mypass.session());
 
 app.get('/test', function (req, res) {
-    util.log('Test!!');
+    tools.log('Test!!');
     res.send('Test ok!');
 });
 
@@ -81,7 +82,7 @@ app.use('/', routes);
 
 app.use(express.static(__dirname + '/client'));
 
-util.log('start');
+tools.log('start');
 
 server.listen(3000);
-util.log('go!');
+tools.log('go!');

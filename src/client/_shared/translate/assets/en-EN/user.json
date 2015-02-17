@@ -1,0 +1,21 @@
+{
+    "User_Profile": "User profile",
+    "User_Name": "Name",
+    "User_Required": "* Required field!",
+    "User_Name_Short": "* Name too short!",
+    "User_Email": "Email",
+    "User_Password": "Password",
+    "User_OldPassword": "Old Password",
+    "User_New_Password": "New Password: ",
+    "User_OldPass_Required": "* Old Password Required!",
+    "User_Pass_Not_Match": "* Passwords not match!",
+    "User_SendMail": "Send Mail",
+    "Bool_Yes": "Yes",
+    "Bool_No": "No",
+    "User_Update": "Update",
+    "User_Cancel": "Cancel",
+    "User_Again": "Again: ",
+    "User_Save": "Save",
+    "User_Delete": "Delete"
+    
+}

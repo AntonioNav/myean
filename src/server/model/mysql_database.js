@@ -150,7 +150,7 @@ module.exports = function database (config) {
         
         connection.connect();
               
-        var queryString = 'SELECT Id, Name, Email FROM `' + config.prefix + 'Users` WHERE Id = ?';
+        var queryString = 'SELECT Id, Name, Email, SendMail FROM `' + config.prefix + 'Users` WHERE Id = ?';
         
         connection.query(queryString, [id], function (err, rows) {
             if (err) {
@@ -181,7 +181,7 @@ module.exports = function database (config) {
         
         connection.connect();
               
-        var queryString = 'SELECT Id, Name, Email FROM `' + config.prefix + 'Users` WHERE Email = ?';
+        var queryString = 'SELECT Id, Name, Email, SendMail FROM `' + config.prefix + 'Users` WHERE Email = ?';
         
         connection.query(queryString, [email], function (err, rows) {
             if (err) {

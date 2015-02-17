@@ -1,0 +1,52 @@
+<div ng-controller="userCtrl as vm">
+    <h1>{{"User_Profile" | translate}}</h1>
+
+    <form name="insertForm" class="form-horizontal text-left" ng-submit="vm.updateUser()" novalidate>
+        <hr>
+        <div class="form-group form-group-sm">
+            <div class="form-group">
+                <label class="control-label col-xs-3">{{"User_Name" | translate}}</label>
+                <div class="col-xs-9" ng-class="(insertForm.newName.$invalid && !insertForm.$pristine) ? 'has-error' : ''">
+                    <input class="form-control col-xs-9" type="text" placeholder="{{'User_Name' | translate}}" name="newName" ng-model="vm.user.Name" ng-minlength="3" required>
+                    <span ng-show='insertForm.newName.$invalid && !insertForm.$pristine' class="text-danger">{{"User_Required" | translate}}</span>
+                    <span ng-show='insertForm.newName.$error.minlength' class="text-danger">{{"User_Name_Short" | translate}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">{{"User_Email" | translate}}</label>
+                <div class="col-xs-9" ng-class="(insertForm.newEmail.$invalid && !insertForm.$pristine) ? 'has-error' : ''">
+                    <input class="form-control col-xs-9" type="email" placeholder="{{'User_Email' | translate}}" name="newEmail" ng-model="vm.user.Email" required>
+                    <span ng-show='insertForm.newEmail.$invalid && !insertForm.$pristine' class="text-danger">{{"User_Required" | translate}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">{{"User_Password" | translate}}</label>
+                <div class="col-xs-9" ng-class="insertForm.newPass2.$error.match ? 'has-error' : ''">
+                    <input class="form-control" type="password" placeholder="{{'User_New_Password' | translate}}" name="newPass1" ng-model="vm.Pass1">
+                    <input class="form-control" type="password" placeholder="{{'User_Again' | translate}}" name="newPass2" ng-model="vm.Pass2" match="vm.Pass1">
+                    <span ng-show='insertForm.newPass2.$error.match' class="text-danger">{{"User_Pass_Not_Match" | translate}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3"></label>
+                <div class="col-xs-9" ng-class="(!vm.OldPass && vm.Pass1) ? 'has-error' : ''">
+                    <input class="form-control" type="password" placeholder="{{'User_OldPassword' | translate}}" name="oldPass" ng-model="vm.OldPass">
+                    <span ng-show='(!vm.OldPass && vm.Pass1)' class="text-danger">{{"User_OldPass_Required" | translate}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-3">{{"User_SendMail" | translate}}</label>
+                <div class="col-xs-9">
+                    <input type="radio" name="newSendMail" ng-model="vm.user.SendMail" value="1">{{1 | transBool | translate }}
+                    <br>
+                    <input type="radio" name="newSendMail" ng-model="vm.user.SendMail" value="0">{{0 | transBool | translate }}
+                </div>
+            </div>
+            <div class="btn-group pull-right">
+                <button type="submit" class="btn btn-success" ng-disabled="(insertForm.$invalid || insertForm.$pristine)">{{"User_Update" | translate}}</button>
+                <button type="button" class="btn btn-info" ng-click="vm.cancel()">{{"User_Cancel" | translate}}</button>
+            </div>
+
+        </div>
+    </form>
+</div>

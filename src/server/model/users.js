@@ -18,17 +18,47 @@ module.exports = function users(database) {
         });
     };
 
-    function updateUser(id, name, email, sendmail, password, cb) {
+    function updateUser(id, name, email, sendmail, password, oldpass, isadmin, cb) {
+        var allowChangePass = true;
+        
         if (password) {
-            bcrypt.genSalt(10, function (err, salt) {
-                bcrypt.hash(password, salt, null, function(err, hash) {
+            if (oldpass) {
+                database.getStoredPass(email, function (err, hash) {
                     if (err) {
                         cb(err, null);
                     } else {
-                        database.updateUser(id, name, email, sendmail, hash, cb);
+                        allowChangePass = bcrypt.compareSync(oldpass, hash);
+
+                        if (password && allowChangePass) {
+                            bcrypt.genSalt(10, function (err, salt) {
+                                bcrypt.hash(password, salt, null, function(err, hash) {
+                                    if (err) {
+                                        cb(err, null);
+                                    } else {
+                                        database.updateUser(id, name, email, sendmail, hash, cb);
+                                    };
+                                });
+                            });
+                        } else {
+                            cb('Password not match', null);
+                        };
                     };
                 });
-            });
+            } else {
+                if (isadmin) {
+                    bcrypt.genSalt(10, function (err, salt) {
+                        bcrypt.hash(password, salt, null, function(err, hash) {
+                            if (err) {
+                                cb(err, null);
+                            } else {
+                                database.updateUser(id, name, email, sendmail, hash, cb);
+                            };
+                        });
+                    });
+                } else {
+                    cb('Not allowed to change password', null);
+                };
+            };
         } else {
             database.updateUser(id, name, email, sendmail, null, cb);
         };
@@ -56,7 +86,12 @@ module.exports = function users(database) {
     };
 
     function delUser(id, cb) {
-        database.deleteUserById(id, cb);
+        //Don't delete admin
+        if (id == 1) {
+            cb('Admin user cannot be delete.', null);
+        } else {
+            database.deleteUserById(id, cb);
+        }
     }
 
     

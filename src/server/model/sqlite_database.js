@@ -123,7 +123,7 @@ module.exports = function database (config) {
     function getUserById(id, cb){
         var db = new sqlite.Database(config.path);
               
-        var queryString = 'SELECT Id, Name, Email FROM `' + config.prefix + 'Users` WHERE Id = ?';
+        var queryString = 'SELECT Id, Name, Email, SendMail FROM `' + config.prefix + 'Users` WHERE Id = ?';
         
         db.all(queryString, [id], function (err, rows) {
             if (err) {
@@ -148,7 +148,7 @@ module.exports = function database (config) {
     function getUserByEmail(email, cb){
         var db = new sqlite.Database(config.path);
               
-        var queryString = 'SELECT Id, Name, Email FROM `' + config.prefix + 'Users` WHERE Email = ?';
+        var queryString = 'SELECT Id, Name, Email, SendMail FROM `' + config.prefix + 'Users` WHERE Email = ?';
         
         db.all(queryString, [email], function (err, rows) {
             if (err) {

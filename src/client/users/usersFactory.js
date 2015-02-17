@@ -6,14 +6,14 @@
             return $http.get('/api/priv/users');
         }
         
-        //Update user data
-        factoria.putUser = function(id, name, email, sendmail, passwd) {
-            return $http.put('/api/priv/user', {Id: id, Name: name, Email:email, SendMail:sendmail, Password: passwd});
-        }
-
         //Insert user
         factoria.newUser = function(name, email, sendmail, passwd) {
             return $http.post('/api/priv/user', {Name: name, Email:email, SendMail:sendmail, Password:passwd});
+        }
+
+        //Update user data
+        factoria.putUser = function(id, name, email, sendmail, passwd) {
+            return $http.put('/api/priv/user/' + id, {Name: name, Email:email, SendMail:sendmail, Password: passwd});
         }
 
         //Delete user

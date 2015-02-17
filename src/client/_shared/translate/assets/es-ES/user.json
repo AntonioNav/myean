@@ -1,0 +1,21 @@
+{
+    "User_Profile": "Datos del Usuario",
+    "User_Name": "Nombre",
+    "User_Required": "* Campo obligatorio!",
+    "User_Name_Short": "* Nombre muy corto!",
+    "User_Email": "Correo",
+    "User_OldPassword": "Contraseña Anterior",
+    "User_Password": "Contraseña",
+    "User_New_Password": "Nueva Contraseña: ",
+    "User_OldPass_Required": "* Contraseña anterior obligatoria!",
+    "User_Pass_Not_Match": "* Contraseñas no coinciden!",
+    "User_SendMail": "Enviar Correo",
+    "Bool_Yes": "Sí",
+    "Bool_No": "No",
+    "User_Update": "Actualizar",
+    "User_Cancel": "Cancelar",
+    "User_Again": "Repetir: ",
+    "User_Save": "Guardar",
+    "User_Delete": "Eliminar"
+    
+}

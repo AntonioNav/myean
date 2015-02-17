@@ -12,8 +12,9 @@
                     });
                 }
             };
-        })
+        });
     
+/*
         //From https://github.com/TheSharpieOne/angular-input-match
         .directive('match', function () {
             return {
@@ -32,4 +33,5 @@
                 }
             };
         });
+*/
 }());

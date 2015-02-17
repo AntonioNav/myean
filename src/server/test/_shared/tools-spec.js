@@ -1,6 +1,6 @@
-var util = require("../../_shared/util.js");
+var util = require("../../_shared/tools.js");
  
-describe("Util module", function () {
+describe("Tools module", function () {
     it("Log function exist", function () {
         expect(util.log).toBeDefined();
     });

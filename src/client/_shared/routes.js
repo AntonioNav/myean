@@ -16,6 +16,11 @@
                 controllerAs: 'vm',
                 templateUrl: 'home/register.html'
             })
+            .when('/user', {
+                controller: 'userCtrl',
+                controllerAs: 'vm',
+                templateUrl: 'user/profile.html'
+            })
             .when('/users/list', {
                 controller: 'usersCtrl',
                 templateUrl: 'users/listUsers.html'
