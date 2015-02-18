@@ -11,17 +11,7 @@ var util = require('util');
 //Files required
 var config = require('./server/_shared/config');
 var tools = require('./server/_shared/tools');
-
-var database = null;
-
-if (config.database.engine == "mysql") {
-    database = require('./server/model/mysql_database')(config.database.params.mysql);
-} else {
-    database = require('./server/model/sqlite_database')(config.database.params.sqlite);
-}
- 
-//var users = require('./server/model/users')(database);
-
+var database = require('./server/model/database')(config);
 var mypass = require('./server/_shared/mypass')(database);
 
 tools.log('ready');

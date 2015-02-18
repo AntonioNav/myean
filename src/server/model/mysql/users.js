@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-module.exports = function database (config) {
+module.exports = function users (config) {
     
     function getAllUsers(cb) {
         var connection = mysql.createConnection({

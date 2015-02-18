@@ -1,5 +1,5 @@
 var sqlite = require('sqlite3');
-module.exports = function database (config) {
+module.exports = function users (config) {
     
     function getAllUsers(cb) {
         var db = new sqlite.Database(config.path);
