@@ -20,38 +20,12 @@ if (config.database.engine == "mysql") {
     database = require('./server/model/sqlite_database')(config.database.params.sqlite);
 }
  
-var users = require('./server/model/users')(database);
+//var users = require('./server/model/users')(database);
 
-var mypass = require('./server/_shared/mypass')(users);
-var routes = require('./server/_shared/routes')(express, mypass, users);
+var mypass = require('./server/_shared/mypass')(database);
 
 tools.log('ready');
-tools.log(JSON.stringify(config));
-
-
-users.listUsers(function (err, rows) {
-    if (err) {
-        tools.log("Error");
-        tools.log(err);
-    } else {
-        tools.log("User List: ");
-        tools.log(rows);
-    };
-});
-
-users.getUser(null, 'admin@admin.new', function (err, rows) {
-    if (err) {
-        tools.log("Error");
-        tools.log(err);
-    } else {
-        if (rows) {
-            tools.log("Default admin data: ");
-            tools.log(rows);
-        } else {
-            tools.log("No data for default admin");
-        }
-    };
-});
+//tools.log(JSON.stringify(config));
 
 var app = express();
 var server = require("http").Server(app);
@@ -78,7 +52,7 @@ app.get('/test', function (req, res) {
     res.send('Test ok!');
 });
 
-app.use('/', routes);
+require('./server/router/routes')(app, express, mypass, database);
 
 app.use(express.static(__dirname + '/client'));
 

@@ -1,4 +1,6 @@
-module.exports = function mypass(users) {
+module.exports = function mypass(database) {
+    
+    var users = require('../model/users')(database);
 
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
