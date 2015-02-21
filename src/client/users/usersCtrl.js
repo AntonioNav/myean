@@ -58,6 +58,7 @@
                 backupEmail = p.Email;
                 backupSendMail = p.SendMail;
             }
+            $rootScope.message = '';
         };
 
         //Update User
@@ -114,7 +115,7 @@
                 usersFactory.deleteUser(p.Id)
                     .success(function(res) {
                         $scope.tableParams.reload();
-                        $rootScope.message = 'User delete with Id: ' + p.Id;
+                        $rootScope.message = 'User delete with Id: ' + res;
                     });
             };
         };

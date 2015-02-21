@@ -121,7 +121,7 @@ module.exports = function routes(express, database) {
             var id = req.params.id;
             users.delUser(id, function(err, result){
                 if (err) {
-                    res.status(500).send('Delete error: ' + err);
+                    res.send(err);
                 } else {
                     res.send('' + JSON.stringify(result));
                 };
